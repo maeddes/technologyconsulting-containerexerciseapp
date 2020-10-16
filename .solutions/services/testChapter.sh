@@ -1,7 +1,6 @@
 #/bin/sh
 set -e
-
-../applications/testChapter.sh
+cd ../applications/
 kubectl apply -f todoui-service.yml
 kubectl apply -f todobackend-service.yml
 export POD=$(kubectl get svc -o name | grep service/todobackend); 
@@ -12,7 +11,7 @@ then
     exit 1;
 fi
 ( 
-
+cd ../services/
 set -x
 sleep 5
 kubectl logs $POD
