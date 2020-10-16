@@ -18,7 +18,6 @@ set -x
 sleep 5
 kubectl logs $POD
 kubectl apply -f postgres-service.yml
-IP=$(kubectl get svc --namespace logging exercises-kb-http -o jsonpath="{.status.loadBalancer.ingress[0].ip}")
 sleep 5
 IP=$(kubectl get svc todoui -o jsonpath="{.status.loadBalancer.ingress[0].ip}")sleep 20
 curl $IP:8090 | head
