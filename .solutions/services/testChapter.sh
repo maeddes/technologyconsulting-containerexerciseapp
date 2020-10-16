@@ -22,7 +22,9 @@ sleep 5
 IP=$(kubectl get svc todoui -o jsonpath="{.status.loadBalancer.ingress[0].ip}")
 sleep 20
 curl $IP:8090 | head
+sleep 5
 kubectl expose deployment todoui --type=LoadBalancer --port 80 --target-port=8090 --name=todoui-port80
+sleep 5
 IP80=$(kubectl get svc todoui-port80 -o jsonpath="{.status.loadBalancer.ingress[0].ip}")
 sleep 20
 curl --silent $IP80 | head -n 4
