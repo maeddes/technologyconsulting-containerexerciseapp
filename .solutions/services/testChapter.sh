@@ -5,7 +5,7 @@ cd ../applications/
 cd ../services/
 kubectl apply -f todoui-service.yml
 kubectl apply -f todobackend-service.yml
-export POD=$(kubectl get svc -o name | grep service/todobackend); 
+export POD=$(kubectl get svc -o name | grep service/todoui); 
 
 if [ -z "$POD" ] ;
 then
@@ -24,7 +24,7 @@ sleep 20
 curl $IP:8090 | head
 sleep 5
 kubectl expose deployment todoui --type=LoadBalancer --port 80 --target-port=8090 --name=todoui-port80
-sleep 5
+sleep 20
 IP80=$(kubectl get svc todoui-port80 -o jsonpath="{.status.loadBalancer.ingress[0].ip}")
 sleep 20
 curl --silent $IP80 | head -n 4
@@ -90,8 +90,8 @@ spec:
             name: nginx-config
 .EOF
 kubectl expose deployment reverseproxy --type=LoadBalancer --port 80
-IPRP=$(kubectl get svc reverseproxy -o jsonpath="{.status.loadBalancer.ingress[0].ip}")
 sleep 20
+IPRP=$(kubectl get svc reverseproxy -o jsonpath="{.status.loadBalancer.ingress[0].ip}")
 curl --verbose $IPRP | head -n 20
 export POD=""
 export IP=""
@@ -105,5 +105,5 @@ kubectl delete deployment,service reverseproxy
 kubectl delete configmap nginx-config
 
 status=$?
-    [ $status -eq 0 ] && echo "deployment chapter is successful" || exit $status
+    [ $status -eq 0 ] && echo "service chapter is successful" || exit $status
 )
