@@ -92,7 +92,7 @@ spec:
             name: nginx-config
 .EOF
 kubectl expose deployment reverseproxy --type=LoadBalancer --port 80
-sleep 20
+sleep 40
 IPRP=$(kubectl get svc reverseproxy -o jsonpath="{.status.loadBalancer.ingress[0].ip}")
 echo $IPRP
 curl --verbose $IPRP | head -n 20
