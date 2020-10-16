@@ -18,8 +18,9 @@ set -x
 sleep 5
 kubectl logs $POD
 kubectl apply -f postgres-service.yml
-sleep 5
+sleep 20
 IP=$(kubectl get svc todoui -o jsonpath="{.status.loadBalancer.ingress[0].ip}")
+echo $IP
 sleep 20
 curl $IP:8090 | head
 sleep 5
@@ -27,6 +28,7 @@ kubectl expose deployment todoui --type=LoadBalancer --port 80 --target-port=809
 sleep 20
 IP80=$(kubectl get svc todoui-port80 -o jsonpath="{.status.loadBalancer.ingress[0].ip}")
 sleep 20
+echo $IP80
 curl --silent $IP80 | head -n 4
 kubectl delete service todoui-port80
 
@@ -92,15 +94,15 @@ spec:
 kubectl expose deployment reverseproxy --type=LoadBalancer --port 80
 sleep 20
 IPRP=$(kubectl get svc reverseproxy -o jsonpath="{.status.loadBalancer.ingress[0].ip}")
+echo $IPRP
 curl --verbose $IPRP | head -n 20
 export POD=""
 export IP=""
 export IP80=""
 export IPRP=""
 
-kubectl delete -f todoui-service.yml
-kubectl delete -f todobackend-service.yml
-kubectl delete -f postgres-service.yml
+echo "Services is done. State will not removed for the next chapter. If you want this, just execute removeChapterState.sh"
+
 kubectl delete deployment,service reverseproxy
 kubectl delete configmap nginx-config
 
