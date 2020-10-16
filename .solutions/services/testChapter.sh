@@ -19,7 +19,8 @@ sleep 5
 kubectl logs $POD
 kubectl apply -f postgres-service.yml
 sleep 5
-IP=$(kubectl get svc todoui -o jsonpath="{.status.loadBalancer.ingress[0].ip}")sleep 20
+IP=$(kubectl get svc todoui -o jsonpath="{.status.loadBalancer.ingress[0].ip}")
+sleep 20
 curl $IP:8090 | head
 kubectl expose deployment todoui --type=LoadBalancer --port 80 --target-port=8090 --name=todoui-port80
 IP80=$(kubectl get svc todoui-port80 -o jsonpath="{.status.loadBalancer.ingress[0].ip}")
