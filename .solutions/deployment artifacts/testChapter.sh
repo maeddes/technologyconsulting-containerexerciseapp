@@ -13,7 +13,7 @@ fi
 ( 
 
 set -x
-sleep 5
+sleep 15
 kubectl logs $POD
 sleep 5
 kubectl port-forward $POD 8080:8080 >> /dev/null &
