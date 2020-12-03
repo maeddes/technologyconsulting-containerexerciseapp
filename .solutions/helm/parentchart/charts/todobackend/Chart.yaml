@@ -1,6 +1,0 @@
-apiVersion: v2
-name: todobackend
-description: todobackend
-type: application
-version: 0.1.0
-appVersion: 1.16.0

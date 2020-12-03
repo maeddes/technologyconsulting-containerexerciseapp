@@ -1,9 +1,0 @@
-image:
-  repository: novatec/technologyconsulting-containerexcerciseapp-todobackend
-  tag: v0.1
-  
-port: 8080
-replicaCount: 1
-
-springProfiles: prod
-postgresHost: helm-postgresdb
