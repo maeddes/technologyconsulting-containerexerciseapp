@@ -2,6 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: todoui-0-3
+  namespace: default
   labels:
     app: todoui
     version: "0.3"
