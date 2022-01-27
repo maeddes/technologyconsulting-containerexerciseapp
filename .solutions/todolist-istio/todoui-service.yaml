@@ -3,9 +3,12 @@ kind: Service
 metadata:
   name: todoui
   namespace: todolist-istio
+  labels:
+    app: todoui
 spec:
   type: LoadBalancer
   ports:
   - port: 8090
+    name: http-todobackend
   selector:
     app: todoui

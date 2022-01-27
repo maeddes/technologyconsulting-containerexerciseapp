@@ -3,9 +3,12 @@ kind: Service
 metadata:
   name: todobackend
   namespace: todolist-istio
+  labels:
+    app: todobackend
 spec:
   type: ClusterIP
   ports:
   - port: 8080
+    name: http-todobackend
   selector:
     app: todobackend

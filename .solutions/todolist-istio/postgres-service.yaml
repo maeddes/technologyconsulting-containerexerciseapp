@@ -3,9 +3,12 @@ kind: Service
 metadata:
   name: postgresdb
   namespace: todolist-istio
+  labels:
+    app: postgresdb
 spec:
   type: ClusterIP
   ports:
   - port: 5432
+    name: tcp-postgres
   selector:
     app: postgresdb
