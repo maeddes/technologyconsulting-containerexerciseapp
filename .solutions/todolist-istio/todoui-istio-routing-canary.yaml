@@ -1,0 +1,26 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: todoui
+spec:
+  hosts:
+  - "todolist-istio.todo.app.20.82.84.66.nip.io"
+  gateways:
+  - todoui
+  http:
+  - match:
+    - uri:
+        prefix: /
+    route:
+    - destination:
+        host: todoui.todolist-istio.svc.cluster.local
+        subset: v0-3
+        port:
+          number: 8090
+      weight: 10
+    - destination:
+        host: todoui.todolist-istio.svc.cluster.local
+        subset: v0-2
+        port:
+          number: 8090
+      weight: 90
