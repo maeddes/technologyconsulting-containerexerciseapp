@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: todoui
+  namespace: todolist-istio
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: todoui  
+  template:
+    metadata:
+      name: todoui
+      labels:
+        app: todoui
+    spec:
+      containers:
+      - name: todoui
+        image: novatec/technologyconsulting-containerexerciseapp-todoui:v0.1
+      restartPolicy: Always
