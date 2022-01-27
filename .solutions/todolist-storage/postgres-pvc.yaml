@@ -2,7 +2,7 @@ apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
   name: postgres-db-data
-  namespace: storage
+  namespace: todolist-storage
 spec:
   accessModes:
     - ReadWriteOnce

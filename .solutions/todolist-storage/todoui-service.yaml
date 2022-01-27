@@ -2,7 +2,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: todoui
-  namespace: initial
+  namespace: todolist-storage
 spec:
   type: LoadBalancer
   ports:

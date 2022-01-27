@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: postgresdb
-  namespace: storage
+  namespace: todolist-storage
 spec:
   replicas: 1
   selector:
