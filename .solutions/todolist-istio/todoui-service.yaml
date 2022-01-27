@@ -9,6 +9,6 @@ spec:
   type: LoadBalancer
   ports:
   - port: 8090
-    name: http-todobackend
+    name: http-todoui
   selector:
     app: todoui
