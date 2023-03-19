@@ -20,5 +20,5 @@ spec:
           value: prod
         - name: POSTGRES_HOST
           value: postgresdb
-        image: novatec/technologyconsulting-containerexerciseapp-todobackend:v0.1
+        image: maeddes/todobackend:v23
       restartPolicy: Always
