@@ -20,5 +20,9 @@ spec:
           value: prod
         - name: POSTGRES_HOST
           value: postgresdb
+        - name: SPRING_SLEUTH_OTEL_EXPORTER_OTLP_ENDPOINT
+          value: http://oteldemo-otelcol.otel.svc.cluster.local:4317
+        - name: SPRING_APPLICATION_NAME
+          value: todobackend
         image: maeddes/todobackend:v23
       restartPolicy: Always

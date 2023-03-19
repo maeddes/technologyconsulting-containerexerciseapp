@@ -15,5 +15,16 @@ spec:
     spec:
       containers:
       - name: todoui
+        env:
+        - name: SPRING_PROFILES_ACTIVE
+          value: prod
+        - name: POSTGRES_HOST
+          value: postgresdb
+        - name: OTEL_EXPORTER_JAEGER_ENDPOINT
+          value: http://oteldemo-otelcol.otel.svc.cluster.local:14250
+        - name: OTEL_SERVICE_NAME
+          value: todobackend
+        - name: OTEL_TRACES_EXPORTER
+          value: jaeger
         image: maeddes/todoui:v23otel
       restartPolicy: Always
