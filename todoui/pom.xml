@@ -44,6 +44,7 @@
 			<scope>test</scope>
 		</dependency>
 
+		<!--
 		
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
@@ -64,6 +65,7 @@
 			<artifactId>opentelemetry-exporter-otlp</artifactId>
 			<version>1.23.1</version>
 		</dependency>		
+	    -->
 
 	</dependencies>
 

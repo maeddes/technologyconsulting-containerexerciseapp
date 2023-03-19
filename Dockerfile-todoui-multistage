@@ -1,0 +1,13 @@
+FROM maven:3 AS build
+WORKDIR /app
+ADD https://github.com/open-telemetry/opentelemetry-java-instrumentation/releases/download/v1.3.1/opentelemetry-javaagent-all.jar .
+ADD spring/pom.xml /app/pom.xml
+RUN mvn dependency:go-offline
+COPY spring/src /app/src
+RUN mvn package
+
+FROM eclipse-temurin:17
+COPY --from=build-env /app/target/*.jar /app/main.jar
+COPY --from=build-env /app/opentelemetry-javaagent-all.jar /app/opentelemetry-javaagent-all.jar
+WORKDIR /app
+CMD ["java -javaagent:./opentelemetry-javaagent-all.jar -Dotel.resource.attributes=service.name=employee-api main.jar"]

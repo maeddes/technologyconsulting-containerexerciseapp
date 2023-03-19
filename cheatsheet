@@ -1,2 +1,9 @@
 mvn compile com.google.cloud.tools:jib-maven-plugin:3.3.1:build -Dimage=maeddes/todoui:v23
 mvn compile com.google.cloud.tools:jib-maven-plugin:3.3.1:build -Dimage=maeddes/todobackend:v23
+
+kubectl debug -it pod-id --image=maeddes/universal:debian-slim-02-23 --target=pod-container
+
+wget https://github.com/open-telemetry/opentelemetry-java-instrumentation/releases/latest/download/opentelemetry-javaagent.jar
+RUN /bin/sh -c wget https://github.com/open-telemetry/opentelemetry-java-instrumentation/releases/latest/download/opentelemetry-javaagent.jar && chmod a+rwx /opt/opentelemetry
+
+ADD https://github.com/open-telemetry/opentelemetry-java-instrumentation/releases/download/v1.3.1/opentelemetry-javaagent-all.jar .
