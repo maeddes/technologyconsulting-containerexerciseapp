@@ -11,3 +11,4 @@ COPY --from=build-env /app/target/*.jar /app/main.jar
 COPY --from=build-env /app/opentelemetry-javaagent-all.jar /app/opentelemetry-javaagent-all.jar
 WORKDIR /app
 CMD ["java -javaagent:./opentelemetry-javaagent-all.jar -Dotel.resource.attributes=service.name=employee-api main.jar"]
+
