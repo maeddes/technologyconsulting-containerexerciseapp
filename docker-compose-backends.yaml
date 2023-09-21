@@ -11,22 +11,22 @@ services:
       - POSTGRES_USER=matthias
       - POSTGRES_DB=mydb
 
-  todobackend:
-    image: maeddes/todobackend:v23
-    ports:
-      - 8080:8080
-    depends_on:
-      - postgresdb
+  # todobackend:
+  #   image: maeddes/todobackend:v23
+  #   ports:
+  #     - 8080:8080
+  #   depends_on:
+  #     - postgresdb
 
-  todoui:
-    image: maeddes/todoui:v23otel
-    ports:
-      - 8090:8090
-    environment:
-      - OTEL_SERVICE_NAME=todoui-otel
-      # - OTEL_EXPORTER_OTLP_ENDPOINT=http://collector:4318
-      - OTEL_TRACES_EXPORTER=jaeger
-      - OTEL_EXPORTER_JAEGER_ENDPOINT=http://jaeger-service:14250
+  # todoui:
+  #   image: maeddes/todoui:v23otel
+  #   ports:
+  #     - 8090:8090
+  #   environment:
+  #     - OTEL_SERVICE_NAME=todoui-otel
+  #     # - OTEL_EXPORTER_OTLP_ENDPOINT=http://collector:4318
+  #     - OTEL_TRACES_EXPORTER=jaeger
+  #     - OTEL_EXPORTER_JAEGER_ENDPOINT=http://jaeger-service:14250
 
 
   collector:
