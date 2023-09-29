@@ -1,0 +1,11 @@
+OTEL_EXPORTER_OTLP_ENDPOINT: http://jaeger:4317
+OTEL_RESOURCE_ATTRIBUTES: service.name=catalog
+OTEL_METRICS_EXPORTER: none
+OTEL_LOGS_EXPORTER: none
+
+export JAVA_TOOL_OPTIONS="-javaagent:/Users/mhs/git/wip/technologyconsulting-containerexerciseapp/opentelemetry-javaagent.jar" \
+  OTEL_TRACES_EXPORTER=logging \
+  OTEL_METRICS_EXPORTER=logging \
+  OTEL_LOGS_EXPORTER=logging \
+  POSTGRES_HOST=localhost \
+  
