@@ -7,9 +7,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.web.bind.annotation.*;
 
-import io.opentelemetry.instrumentation.annotations.SpanAttribute;
-import io.opentelemetry.instrumentation.annotations.WithSpan;
-
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import java.util.ArrayList;
@@ -69,16 +66,8 @@ public class TodobackendApplication {
 	@PostMapping("/todos/{todo}")
 	String addTodo(@PathVariable String todo){
 
-		//todoRepository.save(new Todo(todo));
-		this.someUselessMethod(todo);
-		return "added "+todo;
-	}
-
-	@WithSpan
-	String someUselessMethod(@SpanAttribute String todo){
-
 		todoRepository.save(new Todo(todo));
-		return todo;
+		return "added "+todo;
 
 	}
 
