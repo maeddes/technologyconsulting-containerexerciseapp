@@ -7,6 +7,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.web.bind.annotation.*;
 
+import io.opentelemetry.instrumentation.annotations.SpanAttribute;
+import io.opentelemetry.instrumentation.annotations.WithSpan;
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import java.util.ArrayList;
@@ -72,9 +75,21 @@ public class TodobackendApplication {
 
 	}
 
-	String someUselessMethod(String todo){
+	@WithSpan
+	String someUselessMethod(@SpanAttribute String todo){
 
 		todoRepository.save(new Todo(todo));
+		if(todo.equals("slow")){
+			try {
+				Thread.sleep(1000);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+		} 		
+		if(todo.equals("fail")){
+			System.out.println("Failing ...");
+			System.exit(1);
+		} 
 		return todo;
 
 	}
