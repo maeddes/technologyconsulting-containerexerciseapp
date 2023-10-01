@@ -1,2 +1,6 @@
 markdown http links?
 Otel Proto format?
+add logger
+
+technologyconsulting-containerexerciseapp-todoui-1       | [otel.javaagent 2023-10-01 14:01:04:487 +0000] [OkHttp http://jaeger:4317/...] ERROR io.opentelemetry.exporter.internal.grpc.GrpcExporter - Failed to export metrics. Server responded with UNIMPLEMENTED. This usually means that your collector is not configured with an otlp receiver in the "pipelines" section of the configuration. If export is not desired and you are using OpenTelemetry autoconfiguration or the javaagent, disable export by setting OTEL_METRICS_EXPORTER=none. Full error message: unknown service opentelemetry.proto.collector.metrics.v1.MetricsService
+technologyconsulting-containerexerciseapp-todobackend-1  | [otel.javaagent 2023-10-01 14:01:04:501 +0000] [OkHttp http://jaeger:4317/...] ERROR io.opentelemetry.exporter.internal.grpc.GrpcExporter - Failed to export metrics. Server responded with UNIMPLEMENTED. This usually means that your collector is not configured with an otlp receiver in the "pipelines" section of the configuration. If export is not desired and you are using OpenTelemetry autoconfiguration or the javaagent, disable export by setting OTEL_METRICS_EXPORTER=none. Full error message: unknown service opentelemetry.proto.collector.metrics.v1.MetricsService
