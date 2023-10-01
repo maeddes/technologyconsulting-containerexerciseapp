@@ -12,7 +12,7 @@ services:
       - POSTGRES_DB=mydb
 
   todobackend:
-    image: maeddes/todobackend:otel
+    image: maeddes/todobackend:otx
     ports:
       - "8080:8080"
     environment:
@@ -25,7 +25,7 @@ services:
       - postgresdb
 
   todoui:
-    image: maeddes/todoui:otel
+    image: maeddes/todoui:otx
     ports:
       - "8090:8090"
     environment:

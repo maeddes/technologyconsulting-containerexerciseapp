@@ -1,0 +1,34 @@
+version: '3.1'
+
+services:
+
+  postgresdb:
+    image: postgres
+    ports:
+      - 5432:5432
+    environment:
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_USER=matthias
+      - POSTGRES_DB=mydb
+
+  todobackend:
+    image: maeddes/todobackend:orig
+    ports:
+      - "8080:8080"
+    depends_on:
+      - postgresdb
+
+  todoui:
+    image: maeddes/todoui:orig
+    ports:
+      - "8090:8090"
+
+  jaeger:
+    image: jaegertracing/all-in-one:latest
+    environment:
+      - COLLECTOR_OTLP_ENABLED=true
+    ports:
+      - "16686:16686"
+      - "14250"
+      - "14269:14269"
+
