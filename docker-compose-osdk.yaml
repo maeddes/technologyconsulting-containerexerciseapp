@@ -19,7 +19,7 @@ services:
       - postgresdb
 
   todoui:
-    image: maeddes/todoui:orig
+    image: maeddes/todoui:otel
     ports:
       - "8090:8090"
 
