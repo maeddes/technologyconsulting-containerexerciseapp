@@ -66,8 +66,16 @@ public class TodobackendApplication {
 	@PostMapping("/todos/{todo}")
 	String addTodo(@PathVariable String todo){
 
+		this.someUselessMethod(todo);
+		//todoRepository.save(new Todo(todo));
+		return todo;
+
+	}
+
+	String someUselessMethod(String todo){
+
 		todoRepository.save(new Todo(todo));
-		return "added "+todo;
+		return todo;
 
 	}
 
