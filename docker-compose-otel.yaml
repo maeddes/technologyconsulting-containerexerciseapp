@@ -19,8 +19,6 @@ services:
       SPRING_PROFILES_ACTIVE: prod
       OTEL_EXPORTER_OTLP_ENDPOINT: http://jaeger:4317
       OTEL_RESOURCE_ATTRIBUTES: service.name=todobackend
-      OTEL_METRICS_EXPORTER: none
-      OTEL_LOGS_EXPORTER: none
     depends_on:
       - postgresdb
 
@@ -31,8 +29,6 @@ services:
     environment:
       OTEL_EXPORTER_OTLP_ENDPOINT: http://jaeger:4317
       OTEL_RESOURCE_ATTRIBUTES: service.name=todoui
-      OTEL_METRICS_EXPORTER: none
-      OTEL_LOGS_EXPORTER: none
 
   jaeger:
     image: jaegertracing/all-in-one:latest
