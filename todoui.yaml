@@ -23,8 +23,8 @@ spec:
         - name: OTEL_EXPORTER_JAEGER_ENDPOINT
           value: http://oteldemo-otelcol.otel.svc.cluster.local:14250
         - name: OTEL_SERVICE_NAME
-          value: todobackend
+          value: todoui
         - name: OTEL_TRACES_EXPORTER
           value: jaeger
-        image: maeddes/todoui:v23otel
+        image: maeddes/todoui:orig
       restartPolicy: Always
